@@ -60,5 +60,6 @@ npm run dev
 
 Acesse no seu navegador o link gerado no terminal (geralmente http://localhost:5173/).
 
-💡 Contexto Didático
+## 💡 Contexto Didático
+
 Este projeto foi construído com fins educacionais, projetado para ensinar o passo a passo da lógica de programação front-end. Ele documenta a evolução desde a criação de arquivos modulares básicos até a manipulação de arrays complexos de objetos, servindo como uma excelente base de portfólio para desenvolvedores juniores.
