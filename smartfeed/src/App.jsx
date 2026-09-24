@@ -22,27 +22,37 @@ function App() {
         setPosts([newPost, ...posts]);
     };
 
+    const [currentPage, setCurrentPage] = useState('feed');
 
     return (
         <div className="app-container">
             <Header />
 
             <div className="main-layout">
-                <Sidebar />
+                <Sidebar setCurrentPage={setCurrentPage} />
 
                 <main className="feed-content">
-                    <PostForm onAddPost={handleAddPost} />
+                    {currentPage === 'feed' ? (
+                        <>
+                            <PostForm onAddPost={handleAddPost} />
 
-                    <div className="post-list">
-                        {posts.map((post) => (
-                            <Post
-                                key={post.id}
-                                author={post.author}
-                                content={post.content}
-                                likes={post.likes}
-                            />
-                        ))}
-                    </div>
+                            <div className="post-list">
+                                {posts.map((post) => (
+                                    <Post
+                                        key={post.id}
+                                        author={post.author}
+                                        content={post.content}
+                                        likes={post.likes}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <h2>Página de cursos em construção...</h2>
+                        </>
+                    )}
+                    
                 </main>
             </div>
         </div>

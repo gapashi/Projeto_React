@@ -1,23 +1,24 @@
 import './Sidebar.css';
 
-function Sidebar() {
+function Sidebar({setCurrentPage}) {
     return (
         <aside className="sidebar">
             <nav className="sidebar-nav">
-                <ul>
-                    <li className="active">
-                        <a href="#">Meu Feed</a>
-                    </li>
-                    <li>
-                        <a href="#">Cursos</a>
-                    </li>
-                    <li>
-                        <a href="#">Configurações</a>
-                    </li>
-                    <li>
-                        <a href="#">Agente de IA (Em Breve)</a>
-                    </li>
-                </ul>
+                <button onClick={() => setCurrentPage('feed')}>
+                    Meu Feed
+                </button>
+
+                <button onClick={() => setCurrentPage('cursos')}>
+                    Cursos
+                </button>
+
+                <button>
+                    Configurações
+                </button>
+
+                <button>
+                    Agente de IA (Em breve...)
+                </button>
             </nav>
         </aside>
     );
