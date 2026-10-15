@@ -1,0 +1,66 @@
+.settings-container {
+  background-color: var(--card-bg, #fff);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 2px #00000018;
+  color: var(--text-main, #333);
+}
+
+.settings-container h2 {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.settings-section {
+  margin-bottom: 25px;
+}
+
+.settings-section h3 {
+  font-size: 16px;
+  color: var(--primary-color, #f21818);
+  margin-bottom: 15px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.setting-item strong {
+  display: block;
+  font-size: 15px;
+}
+
+.setting-item p {
+  font-size: 13px;
+  color: var(--text-muted, #777);
+  margin-top: 3px;
+}
+
+.setting-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary-color, #f21818);
+  cursor: pointer;
+}
+
+.toggle-btn {
+  border: 1px solid var(--border-color, #ccc);
+  background-color: var(--btn-secondary, #f0f2f5);
+  color: var(--text-main, #333);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle-btn.active {
+  background-color: var(--primary-color, #0d6efd);
+  color: #fff;
+  border-color: var(--primary-color, #0d6efd);
+}

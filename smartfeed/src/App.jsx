@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Post from './components/Post';
-import PostForm from './components/PostForm';
+import Header from './components/Header.jsx';
+import Sidebar from './components/Sidebar.jsx';
+import Post from './components/Post.jsx';
+import PostForm from './components/PostForm.jsx';
+import CoursesPage from './pages/CoursesPage.jsx';
+import SettingsPage from './pages/SettingsPage.jsx';
 
 function App() {
     const [posts, setPosts] = useState([
@@ -11,7 +13,6 @@ function App() {
         { id: 2, author: 'Usuário Teste', content: 'Primeiro post nessa rede!', likes: 2}
     ]);
 
-    // FUNÇÃO PARA ADICIONAR NOVO POST
     const handleAddPost = (newText) => {
         const newPost = {
             id: Date.now(),
@@ -23,19 +24,27 @@ function App() {
     };
 
     const [currentPage, setCurrentPage] = useState('feed');
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    }, [isDarkMode]);
 
     return (
         <div className="app-container">
             <Header />
 
             <div className="main-layout">
-                <Sidebar setCurrentPage={setCurrentPage} />
+                <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
                 <main className="feed-content">
-                    {currentPage === 'feed' ? (
+                    {currentPage === 'feed' && (
                         <>
                             <PostForm onAddPost={handleAddPost} />
-
                             <div className="post-list">
                                 {posts.map((post) => (
                                     <Post
@@ -47,12 +56,15 @@ function App() {
                                 ))}
                             </div>
                         </>
-                    ) : (
-                        <>
-                            <h2>Página de cursos em construção...</h2>
-                        </>
                     )}
-                    
+
+                    {currentPage === 'cursos' && <CoursesPage />}
+                    {currentPage === 'config' && (
+                        <SettingsPage 
+                            isDarkMode={isDarkMode} 
+                            setIsDarkMode={setIsDarkMode} 
+                        />
+                    )}
                 </main>
             </div>
         </div>
